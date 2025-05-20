@@ -3,14 +3,9 @@ class TweetsController < ApplicationController
     limit = (params[:limit] || 10).to_i
     cursor = params[:cursor] # expects ISO8601 timestamp, e.g., "2024-05-20T12:00:00Z"
 
-    tweets = if cursor
-              Tweet.where('created_at < ?', Time.iso8601(cursor))
-                    .order(created_at: :desc)
-                    .limit(limit)
-            else
-              Tweet.order(created_at: :desc)
-                    .limit(limit)
-            end
+    tweets = Tweet.by_user(params[:user_id]).order(created_at: :desc).limit(limit)
+
+    tweets = tweets.where('created_at < ?', Time.iso8601(cursor)) if cursor
 
     next_cursor = tweets.last&.created_at&.iso8601
 
