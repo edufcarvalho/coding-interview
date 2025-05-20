@@ -20,4 +20,4 @@ Example: ‘username_1: max‘ and ‘username_2: mathew‘ if search by ‘ma�
 5. DONE - Retrieve the tweets for a specific user (using the same index function) - make sure to avoid boilerplate code. Use ‘User model‘ scopes. Adapt your solution to defined routes. Do not modify the routes file
 6. DONE - create a Dockerfile and docker-compose to run the project
 7. DONE - implements a simple CRUD for company (with html pages)
-8. implements a mailer for new user
+8. DONE - implements a mailer for new user
